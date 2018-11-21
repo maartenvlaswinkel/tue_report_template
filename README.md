@@ -15,7 +15,7 @@ git push -u master origin
 ```
 
 ## How to use this template
-This template works best with [MiKTeX](https://miktex.org/), [latexmk](https://ctan.org/pkg/latexmk) and an editor you like.
+This template works best with [MiKTeX](https://miktex.org/), [latexmk](https://mg.readthedocs.io/latexmk.html) and an editor you like.
 
 Simply run the command `latexmk` with a command prompt/terminal in the main folder of your report.
 
