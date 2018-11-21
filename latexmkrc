@@ -1,5 +1,5 @@
 @default_files = '0_main.tex';
-$jobname = 'report_maarten_vlaswinkel';
+$jobname = '<OUTPUT_NAME>';
 
 $pdf_mode = 1;
 $aux_dir = 'tmp/';
