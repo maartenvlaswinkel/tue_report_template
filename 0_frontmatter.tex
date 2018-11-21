@@ -1,0 +1,45 @@
+\pagenumbering{gobble}
+\makeatletter
+\begin{titlepage}
+    \begin{center}
+        \includegraphics[width=.9\textwidth]{frontmatter/tue_logo}\par
+        \vspace{1.5em}
+        {\sffamily \Large Department of Mechanical Engineering \par}
+        \vspace{1.5em}
+        {\sffamily {\Huge \textbf{Title}} \par {\huge Subtitle}}
+    \end{center}
+
+    \vfill
+
+    \begin{table}[H]
+      \centering
+        \begin{tabular}{>{\raggedright\arraybackslash}p{.5\textwidth} >{\raggedleft\arraybackslash}p{.4\textwidth}}
+          \large\textit{Authors:}\vspace{.75em} &  \large\textit{Responsible teacher:}\vspace{.75em} \\
+
+          % Authors
+          M.G. Vlaswinkel BSc \emph{(0899061)}\par
+          \href{mailto:m.g.vlaswinkel@student.tue.nl}{m.g.vlaswinkel@student.tue.nl}
+          %\vspace{.75em}
+          &
+
+          % Responsible teachers
+          prof.dr.ir. P.M.J. van den Hof \par
+          \href{mailto:p.m.j.vandenhof@tue.nl}{p.m.j.vandenhof@tue.nl}
+          %\vspace{.75em}
+        \end{tabular}
+     \end{table}
+
+    \begin{center}
+        {\large Eindhoven\par}\vspace{-\parskip}
+        {\large \today\par}
+    \end{center}
+\end{titlepage}
+
+\pagenumbering{roman} \pagestyle{frontmatter}
+\tableofcontents
+%\newpage \listoffigures
+%\newpage \listoftables
+\thispagestyle{credits} \newpage
+
+\printglossary[type=\acronymtype, title=List of abbreviations, style=abbreviations] \newpage
+\printglossary[type=symbols, title=List of symbols, style=symbols] \newpage

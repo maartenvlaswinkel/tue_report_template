@@ -1,0 +1,22 @@
+% For optimal performance use the latexmk engine! Geloof me, dat wil je. http://mg.readthedocs.io/latexmk.html
+
+\title{...}
+\author{...\and ...}
+
+\input{0_style}
+\loadglsentries{98_glossary}
+
+\begin{document}
+    % Front matter
+    \include{0_frontmatter}
+
+    % Main matter
+    \pagenumbering{arabic} \pagestyle{mainmatter}
+    \include{...}
+
+
+    % Back matter
+    %\newpage
+    %\bibliographystyle{apacite}
+    %\bibliography{99_references}
+\end{document} 

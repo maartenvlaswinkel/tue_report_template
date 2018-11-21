@@ -1,0 +1,28 @@
+\begin{table}[H]
+    \centering
+    \vspace{1.5em}
+    \caption{Peak values and total variation of prototype second-order system given in \cref{eq:1_T_tauzeta} with $\tau = 1$ and $\zeta$ as given in the first column.}\label{tab:2.1}
+    \pgfplotstabletypeset[
+        multicolumn names, % allows to have multicolumn names
+        col sep=comma, % the seperator in our .csv file
+        % Columns
+        display columns/0/.style={column name=$\zeta$},
+        display columns/1/.style={column name=Overshoot},
+        display columns/2/.style={column name=Total variation},
+        display columns/3/.style={column name=$M_T$},
+        display columns/4/.style={column name=$M_S$},
+        % Top
+        every head row/.style={
+            before row={\toprule  & \multicolumn{2}{c}{Time domain} & \multicolumn{2}{c}{Frequency domain} \\  \cmidrule(r{4pt}){2-3} \cmidrule(r{4pt}){4-5}},
+            after row=\midrule
+        },
+        % Every nth row
+        /pgfplots/table/every nth row={4}{
+            before row={\vspace{0.5em}}
+        },
+        % Bottom
+        every last row/.style={
+            after row=\bottomrule
+        },
+    ]{tables/ex1.csv}
+\end{table}  

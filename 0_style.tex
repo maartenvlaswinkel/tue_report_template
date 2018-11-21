@@ -1,0 +1,238 @@
+\documentclass[a4paper, 11pt, oneside, openany]{book}
+
+% Load packages
+% Basic
+\usepackage[left=1.35in, right=1.35in, top=1.25in, bottom=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage[nodayofweek]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\usepackage{versions}
+\usepackage{xifthen}
+
+% Layout
+\usepackage{fancyhdr}
+\usepackage{pdflscape}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage[toc,page]{appendix}
+
+% Code
+\usepackage{listings}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{templates/mcode}
+
+% Images
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{subcaption}
+\usepackage{float}
+
+% Math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+% Text
+\usepackage[hidelinks, pdfusetitle]{hyperref}
+\usepackage{bookmark}
+\usepackage[nameinlink,capitalize,noabbrev]{cleveref}
+\usepackage[binary-units]{siunitx}
+\usepackage[acronym,symbols,nopostdot,nonumberlist]{glossaries}
+\usepackage{appendix}
+\usepackage{color}
+
+% Table
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{pgfplotstable}
+
+% List
+\usepackage[inline]{enumitem}
+
+% Citation
+\usepackage[natbibapa]{apacite}
+\usepackage{natbib}
+
+% Exclude from pdf
+%\excludeversion{figure}
+%\excludeversion{table}
+%\let\clearpage\relax
+%\let\newpage\relax
+
+% Numbering
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
+
+\renewcommand\thesubfigure{\alph{subfigure}}
+\captionsetup{subrefformat=parens}
+
+% Captions
+\captionsetup{font={small}, labelfont={bf}, textfont={}, format={plain}, labelsep=space}
+%\setlength{\belowcaptionskip}{-1.5em}
+
+% Referencing
+\crefname{equation}{Eq.}{Eq.}
+
+% EPStoPDF output folder
+\graphicspath{{img/}}
+\epstopdfsetup{outdir=tmp/imgPDF/}
+
+% MATLAB line-colors
+\definecolor{Mblue}{rgb}{0,0.4470,0.7410}
+\definecolor{Morange}{rgb}{0.8500,0.3250,0.0980}
+
+% SI settings
+\sisetup{exponent-product = \cdot}
+\sisetup{output-complex-root = \ensuremath{\mathrm{j}}}
+
+\hyphenchar\font=-1
+
+% Table of content style
+\setlength\cftaftertoctitleskip{.5em}
+
+%\renewcommand{\cftsecfont}{\normalfont}
+%\renewcommand{\cftsecpagefont}{\normalfont}
+%\renewcommand{\cftsecpresnum}{Exercise }
+%\renewcommand{\cftsecaftersnum}{:}
+%\addtolength{\cftsecnumwidth}{2em}
+
+% Bookmarks
+\bookmarksetup{numbered}
+
+%\makeatletter
+%    \bookmarksetup{%
+%      addtohook={%
+%        \ifnum\toclevel@section=\bookmarkget{level}\relax
+%          \renewcommand*{\numberline}[1]{Exercise #1}%
+%        \fi
+%      }
+%    }
+%\makeatother
+
+% Chapter style
+\titleformat{\chapter}[display]{\vspace{-1.5em}\normalfont\huge\bfseries}{\LARGE \chaptername \ \thechapter}{0em}{}[\vspace{0.5em}]
+
+% Section style
+%\titleformat{\section}{\normalfont\Large\bfseries}{Part \thesection:}{0.5em}{}
+
+% Paragraph style
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.15}
+
+\titlespacing*{\chapter}{0em}{0em}{-.5\parskip}
+\titlespacing*{\section}{0em}{0em}{-.5\parskip}
+\titlespacing*{\subsection}{0em}{0em}{-.5\parskip}
+\titlespacing*{\subsubsection}{0em}{0em}{-.5\parskip}
+
+% Header/Footer
+\makeatletter
+\let\runauthor\@author
+\let\runtitle\@title
+\makeatother
+
+\fancypagestyle{frontmatter}{
+    \fancyhf{}
+    \fancyhead[R]{\thepage \vspace{0.05em}}
+    \vspace{1em}
+    \renewcommand{\headrulewidth}{0.25pt}
+    \headsep = 2em
+}
+
+\fancypagestyle{content}{
+    \fancyhf{}
+    \fancyhead[R]{\thepage \vspace{0.05em}}
+    \vspace{0em}
+    \renewcommand{\headrulewidth}{0.25pt}
+    \headsep = 2.35em
+}
+
+\fancypagestyle{credits}{
+    \fancyhf{}
+    \fancyhead[R]{\thepage \vspace{0.05em}}
+    \vspace{0em}
+    \renewcommand{\headrulewidth}{0.25pt}
+    \headsep = 2em
+
+    \fancyfoot[C]{\footnotesize This \LaTeX\ template is created and maintained by M.G. Vlaswinkel.}
+}
+
+\fancypagestyle{mainmatter}{
+    \fancyhf{}
+    \fancyhead[L]{\textit{\nouppercase\leftmark} \vspace{0.05em}}
+    \fancyhead[R]{\thepage \vspace{0.05em}}
+    \vspace{1em}
+    \renewcommand{\headrulewidth}{0.25pt}
+    \headsep = 2em
+}
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[L]{}
+    \fancyhead[R]{\thepage \vspace{0.05em}}
+    \vspace{0.0em}
+    \renewcommand{\headrulewidth}{0.25pt}
+    \headsep = 2em
+}
+
+\fancypagestyle{firstpage}{
+    \fancyhf{}
+    \fancyhead[L]{}
+    \fancyhead[R]{\thepage \vspace{0.05em}}
+    \vspace{0.0em}
+    \renewcommand{\headrulewidth}{0.25pt}
+    \headsep = 2em
+}
+
+\tocloftpagestyle{content}
+
+% Math stuff
+\newcommand{\minus}{\scalebox{0.65}[1.0]{\( - \)}}
+
+% Glossary
+\newcommand{\listabbreviationname}{List of Abbreviations}
+\newcommand{\listsymbolname}{List of Symbols}
+% List of abbreviations style
+\newglossarystyle{abbreviations}{
+    \renewenvironment{theglossary}{\begin{longtable*}{@{\extracolsep{\fill}} l l }}{\end{longtable*}}
+    \renewcommand*{\glossaryheader}{\toprule Abbreviation & Description \\ \midrule \endhead \bottomrule \endfoot}
+    \renewcommand*{\glsgroupheading}[1]{}
+    \renewcommand*{\glsgroupskip}{}
+    \renewcommand*{\glossentry}[2]{\glstarget{##1}{\glossentryname{##1}} & \glossentrydesc{##1} \vspace{0.25em} \\}
+}
+% List of symbols style
+\renewcommand{\newsymbol}[5][]{
+    \ifthenelse{\isempty{#1}}{
+    \newglossaryentry{#2}{
+        name=\ensuremath{#3},
+        description={#4},
+        unit={#5},
+        type=symbols}}{
+    \newglossaryentry{#2}{
+        name=\ensuremath{#3},
+        description={#4},
+        unit={#5},
+        sort=\ensuremath{#1},
+        type=symbols}}}
+
+\glsaddkey{unit}{\glsentrytext{\glslabel}}{\glsentryunit}{\GLsentryunit}{\glsunit}{\Glsunit}{\GLSunit}
+
+\newglossarystyle{symbols}{
+    \renewenvironment{theglossary}{
+      All variable scalars are displayed as lowercase letters, while all constant scalars are uppercase letters. All vectors are displayed as boldfaced lowercase letters, while matrices are displayed as boldfaced uppercase letters. The symbols that do not specify a unit, have a unit that can change throughout the report and is thus depended on the context where they are used. 
+      
+      \begin{longtable*}{@{\extracolsep{\fill}} l l l}}{\end{longtable*}}
+    \renewcommand*{\glossaryheader}{\toprule Notation & Description & Unit \\ \midrule \endhead \bottomrule \endfoot}
+    \renewcommand*{\glsgroupheading}[1]{}
+    \renewcommand*{\glsgroupskip}{}
+    \renewcommand*{\glossentry}[2]{\glstarget{##1}{\glossentryname{##1}} & \glossentrydesc{##1} & \glsentryunit{##1} \vspace{0.25em} \\}
+}
+
+% Create glossary
+\makeglossaries
