@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt, oneside, openany]{book}
+\documentclass[a4paper, 11pt, oneside, openany]{report}
 
 % Load packages
 % Basic
@@ -19,9 +19,11 @@
 \usepackage{pdflscape}
 \usepackage{titlesec}
 \usepackage{tocloft}
-\usepackage[toc,page]{appendix}
+\usepackage{setspace}
 
 % Code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage{listings}
 \usepackage[framed,numbered,autolinebreaks,useliterate]{templates/mcode}
 
@@ -42,7 +44,6 @@
 \usepackage[nameinlink,capitalize,noabbrev]{cleveref}
 \usepackage[binary-units]{siunitx}
 \usepackage[acronym,symbols,nopostdot,nonumberlist]{glossaries}
-\usepackage{appendix}
 \usepackage{color}
 
 % Table
@@ -68,16 +69,18 @@
 \numberwithin{equation}{chapter}
 \numberwithin{figure}{chapter}
 \numberwithin{table}{chapter}
+\numberwithin{algorithm}{chapter}
 
 \renewcommand\thesubfigure{\alph{subfigure}}
 \captionsetup{subrefformat=parens}
 
 % Captions
-\captionsetup{font={small}, labelfont={bf}, textfont={}, format={plain}, labelsep=space}
+\captionsetup{font={small, stretch=1.3}, labelfont={bf}, textfont={}, format={plain}, labelsep=space}
 %\setlength{\belowcaptionskip}{-1.5em}
 
 % Referencing
 \crefname{equation}{Eq.}{Eq.}
+
 
 % EPStoPDF output folder
 \graphicspath{{img/}}
@@ -116,7 +119,7 @@
 %\makeatother
 
 % Chapter style
-\titleformat{\chapter}[display]{\vspace{-1.5em}\normalfont\huge\bfseries}{\LARGE \chaptername \ \thechapter}{0em}{}[\vspace{0.5em}]
+\titleformat{\chapter}[display]{\vspace{-0.5em}\normalfont\huge\bfseries}{\LARGE \chaptername \ \thechapter}{-0.5em}{}[\vspace{0.5em}]
 
 % Section style
 %\titleformat{\section}{\normalfont\Large\bfseries}{Part \thesection:}{0.5em}{}
@@ -124,12 +127,12 @@
 % Paragraph style
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
-\renewcommand{\baselinestretch}{1.15}
+\renewcommand{\baselinestretch}{1.5}
 
-\titlespacing*{\chapter}{0em}{0em}{-.5\parskip}
-\titlespacing*{\section}{0em}{0em}{-.5\parskip}
-\titlespacing*{\subsection}{0em}{0em}{-.5\parskip}
-\titlespacing*{\subsubsection}{0em}{0em}{-.5\parskip}
+\titlespacing*{\chapter}{0em}{0em}{-.75\parskip}
+\titlespacing*{\section}{0em}{0em}{-.75\parskip}
+\titlespacing*{\subsection}{0em}{0em}{-.75\parskip}
+\titlespacing*{\subsubsection}{0em}{0em}{-.75\parskip}
 
 % Header/Footer
 \makeatletter
@@ -143,14 +146,6 @@
     \vspace{1em}
     \renewcommand{\headrulewidth}{0.25pt}
     \headsep = 2em
-}
-
-\fancypagestyle{content}{
-    \fancyhf{}
-    \fancyhead[R]{\thepage \vspace{0.05em}}
-    \vspace{0em}
-    \renewcommand{\headrulewidth}{0.25pt}
-    \headsep = 2.35em
 }
 
 \fancypagestyle{credits}{
@@ -190,7 +185,7 @@
     \headsep = 2em
 }
 
-\tocloftpagestyle{content}
+\tocloftpagestyle{frontmatter}
 
 % Math stuff
 \newcommand{\minus}{\scalebox{0.65}[1.0]{\( - \)}}
@@ -225,9 +220,11 @@
 
 \newglossarystyle{symbols}{
     \renewenvironment{theglossary}{
-      All variable scalars are displayed as lowercase letters, while all constant scalars are uppercase letters. All vectors are displayed as boldfaced lowercase letters, while matrices are displayed as boldfaced uppercase letters. The symbols that do not specify a unit, have a unit that can change throughout the report and is thus depended on the context where they are used. 
+      All variable scalars are displayed as lowercase letters, while all constant scalars are uppercase letters. All vectors are displayed as boldfaced lowercase letters, while matrices are displayed as boldfaced uppercase letters. The symbols that do not specify a unit, have a unit that can change throughout the report and is thus depended on the context where they are used.
       
-      \begin{longtable*}{@{\extracolsep{\fill}} l l l}}{\end{longtable*}}
+      Vector or matrices with a caligraphic subscript are expressed in a specific frame, being the world frame $\mathcal{O}$, the IMU or body-frame $\mathcal{B}$, and the camera frame $\mathcal{C}$.
+      
+      \begin{longtable*}{@{\extracolsep{\fill}} l p{10.5cm} l}}{\end{longtable*}}
     \renewcommand*{\glossaryheader}{\toprule Notation & Description & Unit \\ \midrule \endhead \bottomrule \endfoot}
     \renewcommand*{\glsgroupheading}[1]{}
     \renewcommand*{\glsgroupskip}{}
