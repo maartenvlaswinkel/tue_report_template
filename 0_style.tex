@@ -81,7 +81,6 @@
 % Referencing
 \crefname{equation}{Eq.}{Eq.}
 
-
 % EPStoPDF output folder
 \graphicspath{{img/}}
 \epstopdfsetup{outdir=tmp/imgPDF/}
@@ -160,8 +159,17 @@
 
 \fancypagestyle{mainmatter}{
     \fancyhf{}
-    \fancyhead[L]{\textit{\nouppercase\leftmark} \vspace{0.05em}}
-    \fancyhead[R]{\thepage \vspace{0.05em}}
+    \fancyhead[L]{\leftmark  \vspace{0.05em}}
+    \fancyhead[R]{\textbf{\thepage} \vspace{0.05em}}
+    \vspace{1em}
+    \renewcommand{\headrulewidth}{0.25pt}
+    \headsep = 2em
+}
+
+\fancypagestyle{bibliography}{
+    \fancyhf{}
+    \fancyhead[L]{\bibname  \vspace{0.05em}}
+    \fancyhead[R]{\textbf{\thepage} \vspace{0.05em}}
     \vspace{1em}
     \renewcommand{\headrulewidth}{0.25pt}
     \headsep = 2em
@@ -221,9 +229,9 @@
 \newglossarystyle{symbols}{
     \renewenvironment{theglossary}{
       All variable scalars are displayed as lowercase letters, while all constant scalars are uppercase letters. All vectors are displayed as boldfaced lowercase letters, while matrices are displayed as boldfaced uppercase letters. The symbols that do not specify a unit, have a unit that can change throughout the report and is thus depended on the context where they are used.
-      
+
       Vector or matrices with a caligraphic subscript are expressed in a specific frame, being the world frame $\mathcal{O}$, the IMU or body-frame $\mathcal{B}$, and the camera frame $\mathcal{C}$.
-      
+
       \begin{longtable*}{@{\extracolsep{\fill}} l p{10.5cm} l}}{\end{longtable*}}
     \renewcommand*{\glossaryheader}{\toprule Notation & Description & Unit \\ \midrule \endhead \bottomrule \endfoot}
     \renewcommand*{\glsgroupheading}[1]{}

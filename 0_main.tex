@@ -10,13 +10,27 @@
     % Front matter
     \include{0_frontmatter}
 
+    % \include{0_abstract}
+    \pagenumbering{roman} \pagestyle{mainmatter}
+    \pdfbookmark{\contentsname}{toc} \tableofcontents \newpage
+    \pdfbookmark{\listfigurename}{\listfigurename} \listoffigures \newpage
+    \pdfbookmark{\listtablename}{\listtablename} \listoftables
+
+    \glsaddall
+    \pdfbookmark{\listabbreviationname}{\listabbreviationname} \printglossary[type=\acronymtype, title=\listabbreviationname, style=abbreviations] \newpage
+    \pdfbookmark{\listsymbolname}{\listsymbolname} \printglossary[type=symbols, title=\listsymbolname, style=symbols] \newpage
+    \glsresetall
+
     % Main matter
     \pagenumbering{arabic} \pagestyle{mainmatter}
     \include{...}
 
-
     % Back matter
-    %\newpage
-    %\bibliographystyle{apacite}
-    %\bibliography{99_references}
-\end{document} 
+    % \newpage \renewcommand{\bibname}{Bibliography} \pagestyle{bibliography}
+    % \bibliographystyle{apacite}
+    % \addcontentsline{toc}{chapter}{\bibname} \bibliography{...}
+
+    % Appendix
+    % \newpage \appendix \renewcommand{\chaptername}{Appendix} \pagestyle{mainmatter}
+    % \include{...}
+\end{document}
